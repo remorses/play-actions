@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Get Changed Files
       uses: lots0logs/gh-action-get-changed-files@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: cat ${HOME}/files.json
     - uses: actions/checkout@v1
     - name: Bump version a
@@ -25,7 +27,7 @@ jobs:
       # working-directory: b
       with:
         version_file: b/VERSION
-        prefix: b
+        prefix: "b"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Dump job context
