@@ -14,9 +14,18 @@ jobs:
     #   env:
     #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # - run: cat ${HOME}/files.json
+
     - uses: actions/checkout@v1
       with:
         path: a
+    - uses: remorses/files-changed@master
+      id: x
+    - run: echo $X
+      env:
+        X: ${{ steps.x.outputs.changedDirs }}
+    - run: echo $X
+      env:
+        X: ${{ steps.x.outputs.changedDirs[0] }}
     - run: pwd
     - run: echo $(pwd)
     - name: Bump version a
