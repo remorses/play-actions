@@ -10,15 +10,14 @@ jobs:
  
     steps:
     - name: Get Changed Files
-      uses: lots0logs/gh-action-get-changed-files@1.0.2
-    - run: cat ${HOME}/files.json
+      uses: lots0logs/gh-action-get-changed-files@master
     - run: cat ${HOME}/files.json
     - uses: actions/checkout@v1
     - name: Bump version a
       uses: remorses/bump-version@master
       with:
         version_file: a/VERSION
-        prefix: a
+        prefix: "a"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Bump version b
