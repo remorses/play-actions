@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
+    - name: Get Changed Files
+      uses: lots0logs/gh-action-get-changed-files@1.0.2
+    - run: cat ${HOME}/files.json
+    - run: cat ${HOME}/files.json
     - uses: actions/checkout@v1
     - name: Bump version a
       uses: remorses/bump-version@master
@@ -25,3 +29,12 @@ jobs:
         prefix: b
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Dump job context
+      env:
+        JOB_CONTEXT: ${{ toJson(job) }}
+      run: echo "$JOB_CONTEXT"
+    - name: Dump steps context
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
+
