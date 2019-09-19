@@ -9,12 +9,16 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - name: Get Changed Files
-      uses: lots0logs/gh-action-get-changed-files@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: cat ${HOME}/files.json
+    # - name: Get Changed Files
+    #   uses: lots0logs/gh-action-get-changed-files@master
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - run: cat ${HOME}/files.json
     - uses: actions/checkout@v1
+      with:
+        path: a
+    - run: pwd
+    - run: echo $(pwd)
     - name: Bump version a
       uses: remorses/bump-version@master
       with:
