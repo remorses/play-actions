@@ -1,54 +1,48 @@
 name: Docker Image CI
 
-on: [push]
+on:
+  push:
+    paths:
+      - a/**
 
 jobs:
-
   build:
- 
     runs-on: ubuntu-latest
- 
     steps:
     # - name: Get Changed Files
     #   uses: lots0logs/gh-action-get-changed-files@master
     #   env:
     #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # - run: cat ${HOME}/files.json
-
     - uses: actions/checkout@v1
       with:
         path: a
-    - uses: remorses/files-changed@master
-      id: x
-    - run: echo $X
-      env:
-        X: ${{ steps.x.outputs.changedDirs }}
-    - run: echo $X
-      env:
-        X: ${{ steps.x.outputs.changedDirs[0] }}
+    # - uses: remorses/files-changed@master
+    #   id: x
+    # - run: echo $changedDirs
+    # - run: echo $X
+    #   env:
+    #     X: ${{ steps.x.outputs.changedDirs }}
+    # - run: echo $X
+    #   env:
+    #     X: ${{ steps.x.outputs.changedDirs[0] }}
     - run: pwd
     - run: echo $(pwd)
     - name: Bump version a
       uses: remorses/bump-version@master
       with:
         version_file: a/VERSION
-        prefix: "a"
+        prefix: a
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Bump version b
-      uses: remorses/bump-version@master
-      # working-directory: b
-      with:
-        version_file: b/VERSION
-        prefix: "b"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Dump job context
-      env:
-        JOB_CONTEXT: ${{ toJson(job) }}
-      run: echo "$JOB_CONTEXT"
-    - name: Dump steps context
-      env:
-        STEPS_CONTEXT: ${{ toJson(steps) }}
-      run: echo "$STEPS_CONTEXT"
+    
+
+    # - name: Dump job context
+    #   env:
+    #     JOB_CONTEXT: ${{ toJson(job) }}
+    #   run: echo "$JOB_CONTEXT"
+    # - name: Dump steps context
+    #   env:
+    #     STEPS_CONTEXT: ${{ toJson(steps) }}
+    #   run: echo "$STEPS_CONTEXT"
 
