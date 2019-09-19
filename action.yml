@@ -1,3 +1,5 @@
+# [bump when prefix is: a]
+_: 0.0.0
 name: 'Container Action Template'
 description: 'Get started with Container actions'
 author: 'GitHub'

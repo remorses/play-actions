@@ -10,4 +10,17 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
-    - uses: remorses/play-actions@0
+    - name: Bump version a
+      uses: remorses/bump-version@master
+      with:
+        version_file: a/VERSION
+        prefix: a
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Bump version b
+      uses: remorses/bump-version@master
+      with:
+        version_file: b/VERSION
+        prefix: a
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,2 @@
+[bump when prefix is: b]
+0.0.0
