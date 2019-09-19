@@ -19,7 +19,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Bump version b
       uses: remorses/bump-version@master
-      working-directory: b
+      # working-directory: b
       with:
         version_file: b/VERSION
         prefix: b
