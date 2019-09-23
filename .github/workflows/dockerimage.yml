@@ -29,15 +29,15 @@ jobs:
     # - run: echo $X
     #   env:
     #     X: ${{ steps.x.outputs.changedDirs[0] }}
-    - run: pwd
-    - run: echo $(pwd)
-    - name: Bump version a
-      uses: remorses/bump-version@master
-      with:
-        version_file: a/VERSION
-        prefix: a
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - run: pwd
+    # - run: echo $(pwd)
+    # - name: Bump version a
+    #   uses: remorses/bump-version@master
+    #   with:
+    #     version_file: a/VERSION
+    #     prefix: a
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
 
     # - name: Dump job context
