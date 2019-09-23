@@ -17,6 +17,12 @@ jobs:
     - uses: actions/checkout@v1
       with:
         path: a
+    - uses: remorses/bump-version@exp
+      with:
+        version_file: b/VERSION
+        prefix: b
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # - uses: remorses/files-changed@master
     #   id: x
     # - run: echo $changedDirs
