@@ -1,9 +1,6 @@
 name: Docker Image CI
 
-on:
-  push:
-    paths:
-      - a/**
+on: [push]
 
 jobs:
   build:
